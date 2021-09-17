@@ -41,18 +41,27 @@
     let startX;
     let scrollLeft;
 
-    slider.addEventListener('mousedown', ()=>{
-isdown= true;
+    slider.addEventListener('mousedown', (e)=>{
+        isdown= true;
+        slider.classList.add('active');
+        startX = e.pageX-slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
     })
     slider.addEventListener('mouseleave', ()=>{
         isdown = false;
+        slider.classList.remove('active');
     })
     slider.addEventListener('mouseup', ()=>{
         isdown = false;
+        slider.classList.remove('active');
     })
-    slider.addEventListener('mousemove', ()=>{
+    slider.addEventListener('mousemove', (e)=>{
         if(!isdown) return;
-        console.count(isdown)
+        e.preventDefault();
+        const x= e.pageX - slider.offsetLeft;
+        const walk = x-startX;
+        slider.scrollLeft = scrollLeft -walk;
+        
     })
 </script>
 
