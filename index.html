@@ -35,8 +35,26 @@
   </div>
 
 <script>
+
+    const slider = document.querySelector('.items');
+    let isdown = false;
+    let startX;
+    let scrollLeft;
+
+    slider.addEventListener('mousedown', ()=>{
+isdown= true;
+    })
+    slider.addEventListener('mouseleave', ()=>{
+        isdown = false;
+    })
+    slider.addEventListener('mouseup', ()=>{
+        isdown = false;
+    })
+    slider.addEventListener('mousemove', ()=>{
+        if(!isdown) return;
+        console.count(isdown)
+    })
 </script>
 
   </body>
 </html>
-© 2021 GitHub, Inc.
